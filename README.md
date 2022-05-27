@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Purpose of this project is to serve as a review repo for the DPL Summer 2022 Full time Cohort.
 
-Things you may want to cover:
+List of Topics:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Simon Says game in react ( array manipulations )
