@@ -1,12 +1,19 @@
 import './App.css';
-import MemoryGame from './Components/MemoryGame';
+import {Route, Routes} from 'react-router-dom'
+import Home from './Pages/Home';
+import Navbar from './Components/Navbar';
+import Game from './Pages/Game';
+import NoMatch from './Pages/NoMatch';
 
 function App() {
   return (
-    <div className="App">
-      <h1> Review Summer 2022</h1>
-      <MemoryGame/>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navbar/>}>
+      <Route index element={<Home/>}/>
+      <Route path='/game' element={<Game/>}/>
+      <Route path='/*' element={<NoMatch/>}/>
+      </Route>
+    </Routes>
   );
 }
 
