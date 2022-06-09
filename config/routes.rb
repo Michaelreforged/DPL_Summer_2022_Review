@@ -3,4 +3,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  namespace :api do
+    get 'quotes', to: 'quotes#index'
+    post 'quotes', to: 'quotes#create'
+    get 'quotes/:id', to: 'quotes#show'
+    put 'quotes/:id', to: 'quotes#update'
+    delete 'quotes/:id', to: 'quotes#destroy'
+  end
+
 end
