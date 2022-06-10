@@ -4,6 +4,7 @@ import Game from './Pages/Game';
 import Home from './Pages/Home';
 import NoMatch from './Pages/NoMatch';
 import States from './Pages/States';
+import { QuotesRoutes } from './Routes/QuotesRoutes';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route index element={<Home/>}/>
       <Route path='/game' element={<Game/>}/>
       <Route path='/states' element={<States/>}/>
+      <Route path='/quotes/*' element={<QuotesRoutes/>}/>
       <Route path='/*' element={<NoMatch/>}/>
       </Route>
     </Routes>
