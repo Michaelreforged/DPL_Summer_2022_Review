@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     put '/quotes/:id', to:"quotes#update"
     patch '/quotes/:id', to:"quotes#update"
     delete '/quotes/:id', to:"quotes#destroy"
+    resources :locations do
+      resources :champions
+    end
+
   end
 
 end
