@@ -6,6 +6,8 @@ const Navbar =()=>{
       <Link to='/'>Home</Link>
       <Link to='/game'>Game</Link>
       <Link to='/states'>States</Link>
+      <Link to='/locations'>Locations</Link>
+      <Link to='/champions'>Champions</Link>
       <Outlet/>
     </div>
   )

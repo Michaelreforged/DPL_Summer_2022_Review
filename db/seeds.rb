@@ -8,9 +8,25 @@
 require 'faker'
 
 Quote.destroy_all
+Champion.destroy_all
+Location.destroy_all
 
 10.times do
   Quote.create({phrase: Faker::Quote.famous_last_words})
 end
 
+Location.create([
+  {name:'Noxus'},
+  {name:'Demacia'},
+  {name:'Frelord'},
+  {name:'Piltover'},
+])
+
+10.times do
+  Champion.create(name: Faker::Games::LeagueOfLegends.champion, skills: '[Q,W,E,R]', location: Location.all[rand(Location.count)] )
+end
+
+
 puts "Total Quotes: #{Quote.count}"
+puts "Total Location: #{Location.count}"
+puts "Total Champion: #{Champion.count}"
