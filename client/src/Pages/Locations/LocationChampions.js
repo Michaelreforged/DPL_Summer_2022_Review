@@ -17,12 +17,20 @@ const LocationChampions =()=>{
     console.log(res.data)
   }
 
+  const deleteChamp = async (champId) =>{
+    setChamps(champs.filter((champ)=>{
+      return champ.id != champId
+    }))
+    await axios.delete(`/api/locations/${id}/champions/${champId}`)
+  }
+
   const renderChampions = () => {
-    return champs.map(({name,id})=>{
+    return champs.map(({name,id:champId,skills})=>{
       return (
-        <div key={id}>
+        <div key={champId}>
           <h1>{name}</h1>
-          <button onClick={()=>{nav(`/champions/${id}/form`)}}>Edit Champ</button>
+          <button onClick={()=>{nav(`/champions/${champId}/form`,{state:{name, skills,champId,locationId:id}})}}>Edit Champ</button>
+          <button onClick={()=>{deleteChamp(champId)}}>Delete</button>
         </div>
       )
     })

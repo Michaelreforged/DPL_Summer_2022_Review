@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar';
 import Game from './Pages/Game';
 import Home from './Pages/Home';
 import NoMatch from './Pages/NoMatch';
+import Normalize from './Pages/Normailze';
 import States from './Pages/States';
 import { ChampionsRoutes } from './Routes/ChampionsRoutes';
 import { LocationsRoutes } from './Routes/LocationsRoutes';
@@ -15,6 +16,7 @@ function App() {
       <Route index element={<Home/>}/>
       <Route path='/game' element={<Game/>}/>
       <Route path='/states' element={<States/>}/>
+      <Route path='/normalize' element={<Normalize/>}/>
       <Route path='/quotes/*' element={<QuotesRoutes/>}/>
       <Route path='/locations/*' element={<LocationsRoutes/>}/>
       <Route path='/champions/*' element={<ChampionsRoutes/>}/>

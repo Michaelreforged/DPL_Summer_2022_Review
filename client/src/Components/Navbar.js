@@ -8,6 +8,7 @@ const Navbar =()=>{
       <Link to='/states'>States</Link>
       <Link to='/locations'>Locations</Link>
       <Link to='/champions'>Champions</Link>
+      <Link to='/normalize'>Normalize</Link>
       <Outlet/>
     </div>
   )
