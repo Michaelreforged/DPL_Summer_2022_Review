@@ -15,12 +15,20 @@ const LocationHome =()=>{
     setLocations(res.data)
   }
 
+  const deleteLoc = async (id) =>{
+    await axios.delete(`api/locations/${id}`)
+    setLocations(locations.filter((location)=>{
+      return location.id !== id
+    }))
+  }
   const renderLocations = () => {
     return locations.map(({name,id})=>{
       return (
         <div key={id}>
           <h1>{name}</h1>
-          <button onClick={()=>{nav(`/locations/${id}/champions`)}}>Champions</button>
+          <button onClick={()=>{nav(`/locations/${id}/champions`,{state:{name}})}}>Champions</button>
+          <button onClick={()=>{nav(`/locations/${id}/edit`, {state:{name,id}})}}>Edit</button>
+          <button onClick={()=>{deleteLoc(id)}}>Delete</button>
         </div>
       )
     })

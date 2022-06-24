@@ -1,9 +1,11 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 
 const LocationChampions =()=>{
+  const loc = useLocation()
   const [champs, setChamps] = useState([])
+  const [name, setName] = useState(loc.state? loc.state.name:null)
   const nav = useNavigate()
   const {id} = useParams()
 
@@ -14,15 +16,18 @@ const LocationChampions =()=>{
   const getLocations = async()=>{
     let res = await axios.get(`/api/locations/${id}/champions`)
     setChamps(res.data)
-    console.log(res.data)
+    if( name == null ){
+      let res = await axios.get(`/api/locations/${id}`)
+      setName(res.data.name)
+    }
   }
 
   const renderChampions = () => {
-    return champs.map(({name,id})=>{
+    return champs.map(({name,id:champId,skills})=>{
       return (
-        <div key={id}>
+        <div key={champId}>
           <h1>{name}</h1>
-          <button onClick={()=>{nav(`/champions/${id}/form`)}}>Edit Champ</button>
+          <button onClick={()=>{nav(`/champions/${id}/form`,{state:{name,locationId:id,skills,champId}})}}>Edit Champ</button>
         </div>
       )
     })
@@ -30,7 +35,7 @@ const LocationChampions =()=>{
 
   return(
     <div>
-      <h1>Location Champions</h1>
+      <h1>{name}'s Champions</h1>
       {renderChampions()}
     </div> 
   )

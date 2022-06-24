@@ -1,35 +1,47 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 
-const ChampionForm =({name, location_id,skills})=>{
+const ChampionForm =()=>{
+  const loc = useLocation()
   const {id} = useParams()
-  const [champName, setChampName] = useState(id && name ? name : "" )
+  const [champName, setChampName] = useState(id && loc.state ? loc.state.name : "" )
+  const [locId, setLocId] = useState(loc.state ? loc.state.locationId : "")
+
   const nav = useNavigate()
 
   useEffect(()=>{
     getChamp()
-    console.log(champName)
   },[])
 
   const getChamp = async () =>{
-    if(id && location_id == undefined){
+    if(id && loc.state == null){
       let res = await axios.get('/api/allChamp')
       setChampName(res.data.filter(champ =>{
         return champ.id == id
       })[0].name) 
     }
   }
-
-  const handleSubmit = (e)=>{
-
+  console.log(loc)
+  console.log(locId)
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
+    try {
+      await axios.put(`/api/locations/${locId}/champions/${loc.state.champId}`,{name:champName})
+      nav(`/locations/${locId}/champions`)
+    } catch (error) {
+      alert('error')
+    }
   }
 
   return(
     <div>
       <h1>Edit Champions</h1>
       <form onSubmit={handleSubmit}>
-      
+      <input
+        value={champName}
+        onChange={(e)=>setChampName(e.target.value)}
+        />
       </form>
     </div> 
   )
