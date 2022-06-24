@@ -11,3 +11,5 @@ List of Topics:
 3. Provider and router review
 
 4. Has_Many
+
+5. Has_Many cont. + Normalization?
