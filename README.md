@@ -13,3 +13,5 @@ List of Topics:
 4. Has_Many
 
 5. Has_Many cont. + Normalization?
+
+6. Validation (FE + BE)
