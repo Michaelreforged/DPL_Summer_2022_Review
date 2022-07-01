@@ -6,18 +6,28 @@ const QuoteForm = ({quote}) =>{
   const [show, setShow] = useState(false)
   const [phrase, setPhrase]= useState(quote?quote.phrase:"")
   const {addQuote, updateQuote} = useContext(QuoteContext)
+  const [valid, setValid] = useState(false)
 
   const newQuoteCheck = typeof quote !== "object"
 
   const handleSubmit = async(e) => {
     e.preventDefault()
     if(newQuoteCheck){
-      let res = await axios.post('/api/quotes',{phrase})
-      addQuote(res.data)
+      try {
+        let res = await axios.post('/api/quotes',{phrase})
+        addQuote(res.data)
+        setPhrase("")
+        setShow(false)
+        setValid("")
+      } catch (error) {
+        const err = error.response.data.errors.join("\n")
+        setValid(err)
+      } 
     }else{
       let res = await axios.put(`/api/quotes/${quote.id}`,{phrase})
       updateQuote(res.data)
     }
+
   }
 
   const renderForm = () =>{
@@ -40,6 +50,7 @@ const QuoteForm = ({quote}) =>{
         {show? "Hide Form":"Show Form"}
       </button>
       {show && renderForm()}
+      {valid && <p style={{whiteSpace: 'pre-wrap'}}>{valid}</p>}
     </div>
   )
 }
