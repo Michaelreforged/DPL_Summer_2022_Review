@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/quotes/', to:"quotes#index"
     post '/quotes/', to:"quotes#create"
     get '/quotes/:id', to:"quotes#show"
+    get '/pagequotes/', to:"quotes#pageQuotes"
     put '/quotes/:id', to:"quotes#update"
     patch '/quotes/:id', to:"quotes#update"
     delete '/quotes/:id', to:"quotes#destroy"

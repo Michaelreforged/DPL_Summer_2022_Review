@@ -11,7 +11,7 @@ Quote.destroy_all
 Champion.destroy_all
 Location.destroy_all
 
-10.times do
+1000.times do
   Quote.create({phrase: Faker::Quote.famous_last_words})
 end
 
