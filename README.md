@@ -15,3 +15,5 @@ List of Topics:
 5. Has_Many cont. + Normalization?
 
 6. Validation (FE + BE)
+
+7. 3rd party libs (Pagination)
