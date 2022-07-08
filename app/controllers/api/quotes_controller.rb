@@ -11,7 +11,8 @@ class Api::QuotesController < ApplicationController
 
   def create
     quote = Quote.new(quote_params)
-    if(quote.save)
+    if(quote.validate)
+      quote.save
       render json: quote
     else
       render json: {errors: quote.errors.full_messages}, status:422
