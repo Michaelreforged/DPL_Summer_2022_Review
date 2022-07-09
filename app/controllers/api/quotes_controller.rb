@@ -1,5 +1,6 @@
 class Api::QuotesController < ApplicationController
   before_action :set_quote, only:[:show,:destroy,:update]
+  before_action :page, only: [:pageQuotes]
 
   def index
     render json: Quote.all.order(:created_at)
@@ -31,7 +32,18 @@ class Api::QuotesController < ApplicationController
     render json: @quote.destroy
   end
 
+  def pageQuotes
+    quote = Quote.all
+    count = quote.count
+    render json: {quote: Kaminari.paginate_array(quote).page(@page).per(@per), count:count, per:@per}
+  end
+
   private
+
+  def page
+    @page = params[:page] || 1
+    @per = params[:per] || 30
+  end
 
   def set_quote
     @quote = Quote.find(params[:id])

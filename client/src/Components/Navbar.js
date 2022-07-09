@@ -11,6 +11,8 @@ const Navbar =()=>{
       <Link to='/champions'>Champions</Link>
       <Link to='/normalize'>Normalize</Link>
       <Link to='/validation'>Validation</Link>
+      <Link to='/pagination'>Pagination</Link>
+      <Link to='/infi'>Infinite Scroll</Link>
       <Outlet/>
     </div>
   )
