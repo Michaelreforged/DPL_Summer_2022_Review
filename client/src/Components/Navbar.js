@@ -13,6 +13,7 @@ const Navbar =()=>{
       <Link to='/validation'>Validation</Link>
       <Link to='/pagination'>Pagination</Link>
       <Link to='/infi'>Infinite Scroll</Link>
+      <Link to='/time'>Time</Link>
       <Outlet/>
     </div>
   )
