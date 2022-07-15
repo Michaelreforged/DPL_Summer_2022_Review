@@ -7,6 +7,7 @@ import NoMatch from './Pages/NoMatch';
 import Normalize from './Pages/Normailze';
 import Pagination from './Pages/Pagination';
 import States from './Pages/States';
+import TimeDemo from './Pages/Timedemo';
 import Validation from './Pages/Validation';
 import { ChampionsRoutes } from './Routes/ChampionsRoutes';
 import { LocationsRoutes } from './Routes/LocationsRoutes';
@@ -23,6 +24,7 @@ function App() {
       <Route path='/validation' element={<Validation/>}/>
       <Route path='/pagination' element={<Pagination/>}/>
       <Route path='/infi' element={<InfiniScroll/>}/>
+      <Route path='/time' element={<TimeDemo/>}/>
       <Route path='/quotes/*' element={<QuotesRoutes/>}/>
       <Route path='/locations/*' element={<LocationsRoutes/>}/>
       <Route path='/champions/*' element={<ChampionsRoutes/>}/>
