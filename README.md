@@ -15,3 +15,7 @@ List of Topics:
 5. Has_Many cont. + Normalization?
 
 6. Validation (FE + BE)
+
+7. Pagination and infinite scroll( 3rd Party Library ) 
+
+8. Moment/Luxon Time 3rd (Party Library)
